@@ -5,8 +5,6 @@
  * @last 2016-09-29
  */
 import pinyin_dict_firstletter from './dict/pinyin_dict_firstletter';
-import pinyin_dict_notone from './dict/pinyin_dict_notone';
-import pinyin_dict_withtone from './dict/pinyin_dict_withtone';
 
 let dict = {}; // 存储所有字典数据
 let pinyinUtil = {
@@ -17,26 +15,6 @@ let pinyinUtil = {
         // 如果导入了 pinyin_dict_firstletter.js
         dict.firstletter = pinyin_dict_firstletter;
         // 如果导入了 pinyin_dict_notone.js
-        dict.notone = {};
-        dict.py2hz = pinyin_dict_notone; // 拼音转汉字
-        for (var i in pinyin_dict_notone) {
-            var temp = pinyin_dict_notone[i];
-            for (var j = 0, len = temp.length; j < len; j++) {
-                dict.notone[temp[j]] = i; // 不考虑多音字
-            }
-        }
-        // 如果导入了 pinyin_dict_withtone.js
-        dict.withtone = {};
-        var temp = pinyin_dict_withtone.split(',');
-        for (var i = 0, len = temp.length; i < len; i++) {
-            // 这段代码耗时28毫秒左右，对性能影响不大，所以一次性处理完毕
-            dict.withtone[String.fromCharCode(i + 19968)] = temp[i]; // 这里先不进行split(' ')，因为一次性循环2万次split比较消耗性能
-        }
-
-        // 拼音 -> 汉字
-        // 对于拼音转汉字，我们优先使用pinyin_dict_notone字典文件
-        // 因为这个字典文件不包含生僻字，且已按照汉字使用频率排序
-        dict.py2hz = pinyin_dict_notone; // 拼音转汉字
     },
     /**
      * 根据汉字获取拼音，如果不是汉字直接返回原字符
