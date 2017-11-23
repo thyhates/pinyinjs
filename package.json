@@ -1,0 +1,19 @@
+{
+  "name": "react-pinyin",
+  "version": "0.0.1",
+  "description": "一个实现汉字与拼音互转的小巧web工具库，另外还包含一个非常非常简单的JS版拼音输入法。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thyhates/react-pinyin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thyhates/react-pinyin/issues"
+  },
+  "homepage": "https://github.com/thyhates/react-pinyin#readme"
+}
